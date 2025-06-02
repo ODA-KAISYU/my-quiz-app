@@ -73,7 +73,7 @@ export default function Quiz1Questions() {
         <input
           className={styles.input}
           name={item.name}
-          value={answers[item.name] || ""}
+          value={answers[item.name] ?? ""}
           onChange={handleChange}
           placeholder={`${index + 1}`}
         />
