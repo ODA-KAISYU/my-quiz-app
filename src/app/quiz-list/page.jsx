@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import {quizList} from "../data/quizMeta";
+import { useState } from "react";
 import styles from "./page.module.css";
 import QuizListTable from "../components/QuizListTable";
 
-export default function quizListPage() {
+export default function QuizListPage() {
     const [quizList, setQuizList] = useState([
         { id: 1, title: "第1章 小テスト", resultDate: null, isSubmitted: false },
     { id: 2, title: "第2章 小テスト", resultDate: null, isSubmitted: false },

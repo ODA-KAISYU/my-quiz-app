@@ -1,5 +1,7 @@
 import quiz from "../components/styles/QuizListTable.module.css"
-import { useEffect, useState  } from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
     useEffect(() => {
@@ -14,6 +16,8 @@ export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
         //quizListの変更をローカルストレージに保存する
         localStorage.setItem("quizList", JSON.stringify(quizList));
     },[quizList]);
+
+    const router = useRouter();
 
     return (
       <table className={quiz.table}>
@@ -36,24 +40,25 @@ export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
                 <button onClick={ () => {
                     if (!quizItem.isSubmitted) onSubmitQuiz(quizItem.id); 
                  }}
-                className={quiz.iconBUtton}>
+                className={quiz.iconButton}>
                 ≡
                 </button>
               </td>
               <td className={quiz.td}>
-                  <a href={`/quiz/${quizItem.id}`} 
-                     className={quiz.startButton}
-                     onClick={() => {
-                        const updatedQuizList = quizList.map(item =>
-                             item.id === quizItem.id 
-                             ? { ...item, resultDate: new Date().toLocaleString(), isSubmitted: true}
-                            : item
-                            );
-                           setQuizList(updatedQuizList);
-                     }}
-                     >
-                      →
-                  </a>
+                  <Link
+                    href={`/quiz/${quizItem.id}/start`}
+                    className={quiz.startButton}
+                    onClick={() => {
+                      const updatedQuizList = quizList.map(item =>
+                        item.id === quizItem.id
+                          ? { ...item, resultDate: new Date().toLocaleString(), isSubmitted: true }
+                          : item
+                      );
+                      setQuizList(updatedQuizList);
+                    }}
+                  >
+                    →
+                  </Link>
               </td>
             </tr>
           ))}
