@@ -1,0 +1,131 @@
+.resultMain {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .resultTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .answerTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+  }
+  
+  .answerTable th,
+  .answerTable td {
+    border: 1px solid #ccc;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  
+  .answerTable th {
+    background-color: #1d4e9b; /* Deep blue */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .correctAnswerList {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  .correctAnswerList li {
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+.questionHeader {
+    background-color: #1d4e9b;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-align: left;
+    margin: 0;
+}
+
+.questionLine {
+    height: 4px;
+    background-color: #ffeb00; /* Yellow line */
+    margin-bottom: 20px;
+}
+
+.titleLabel,
+.answerContentLabel,
+.correctLabel,
+.scoreLabel {
+    font-size: 1rem;
+    color: #1d4e9b; /* Deep blue */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.correctAnswerTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+.correctAnswerTable td {
+    border: 1px solid #ccc;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+.homeButton {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 16px 32px;
+    background-color: #1d4e9b; /* ヘッダーと同じ青 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+}
+
+.homeButton:hover {
+    background-color: #163f7a; /* 少し濃い青に変化 */
+    transform: translateY(-3px); /* 少し浮き上がる */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* 影が強くなる */
+}

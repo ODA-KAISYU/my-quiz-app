@@ -48,7 +48,8 @@
 }
 
 .button {
-    margin-top: 2rem;
+    display: block;
+    margin: 2rem auto 0 auto;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     cursor: pointer;
@@ -74,4 +75,12 @@
     font-weight: bold;
     min-width: 2rem;      /* 最低幅を持たせて番号がズレにくくする */
     text-align: right;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 1rem;
   }
