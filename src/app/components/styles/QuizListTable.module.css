@@ -18,6 +18,7 @@
 .table thead {
     background-color: #1d4e9b;
     color: white;
+    border-bottom: 4px solid #ffeb00; /* yellow underline */
 }
 
 .th,.td {
@@ -31,34 +32,24 @@
     text-align: center;
 }
 
-.tbody tr:nth-child(even) {
-    background-color: #FFF;
-}
-
-.tbody tr:nth-child(odd) {
-    background-color: #FFF;
-}
-
-.button {
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #555;
-}
 
 .iconButton {
-    background: none;
+    background-color: #555;
     border: none;
-    font-size: 1.8rem;
-    font-weight: bold;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: #1d4e9b;
-    transition: color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .iconButton:hover {
-    color: #163f7a;
+    background-color: #333;
     transform: scale(1.1);
 }
 
@@ -67,14 +58,27 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 8px;
-    padding: 8px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 10;
-    min-width: 120px; /* Added to make popup wider */
+    min-width: 140px;
+    text-align: left;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menuPopup::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
 }
 
 .menuItem {

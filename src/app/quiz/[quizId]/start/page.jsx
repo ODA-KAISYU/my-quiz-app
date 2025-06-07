@@ -17,14 +17,17 @@ export default function QuizIntroPage() {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>第{quizId}章 小テスト</h1>
-      <div className={styles.buttonRow}>
-        <Link href="/quiz-list">
-          <button className={styles.secondaryButton}>戻る</button>
-        </Link>
-        <Link href={`/quiz/${quizId}/questions`}>
-          <button className={styles.button}>開始</button>
-        </Link>
+      <div className={styles.card}>
+        <h1 className={styles.title}>第{quizId}章 小テスト</h1>
+        <p className={styles.description}>準備ができたら「開始」を押してください。</p>
+        <div className={styles.buttonRow}>
+          <Link href="/quiz-list">
+            <button className={styles.secondaryButton}>戻る</button>
+          </Link>
+          <Link href={`/quiz/${quizId}/questions`}>
+            <button className={styles.button}>開始</button>
+          </Link>
+        </div>
       </div>
     </main>
   );

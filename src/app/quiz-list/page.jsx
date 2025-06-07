@@ -37,7 +37,7 @@ export default function QuizListPage() {
 
     return (
         <main className={styles.container}>
-            <h1 className={styles.title}>小テスト一覧</h1>
+            <h1 className={styles.title}>日本史 小テスト一覧</h1>
             <QuizListTable quizList={quizList}
                            setQuizList={setQuizList}
                            onSubmitQuiz={handleSubmitQuiz} 
