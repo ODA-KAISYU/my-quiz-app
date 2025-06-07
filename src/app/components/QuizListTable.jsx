@@ -1,9 +1,11 @@
 import quiz from "../components/styles/QuizListTable.module.css"
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
+    const [openMenuId, setOpenMenuId] = useState(null);
+
     useEffect(() => {
         // ローカルストレージから初期データを読み込む
         const storedData = localStorage.getItem("quizList");
@@ -19,6 +21,7 @@ export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
 
     const router = useRouter();
 
+    console.log("quizList", quizList);
     return (
       <table className={quiz.table}>
         <thead>
@@ -36,13 +39,38 @@ export default function QuizListTable({ quizList, onSubmitQuiz, setQuizList }) {
               <td className={quiz.td}>{quizItem.title}</td>
               <td className={quiz.td}>{quizItem.resultDate || ' '}</td>
               <td className={quiz.td}>{quizItem.isSubmitted ? '提出済み' : '未実施'}</td>
-              <td className={quiz.td} style={{ textAlign: 'center'}}>
-                <button onClick={ () => {
-                    if (!quizItem.isSubmitted) onSubmitQuiz(quizItem.id); 
-                 }}
-                className={quiz.iconButton}>
-                ≡
+              <td className={quiz.td} style={{ textAlign: 'center', position: 'relative' }}>
+                <button
+                    onClick={() =>
+                        setOpenMenuId(openMenuId === quizItem.id ? null : quizItem.id)
+                    }
+                    className={quiz.iconButton}
+                >
+                    ≡
                 </button>
+
+                {openMenuId === quizItem.id && (
+                  <div className={quiz.menuPopup}>
+                    <button
+                      className={quiz.menuItem}
+                      onClick={() => {
+                        router.push(`/quiz/${quizItem.id}/history`);
+                        setOpenMenuId(null);
+                      }}
+                    >
+                      履歴
+                    </button>
+                    <button
+                      className={quiz.menuItem}
+                      onClick={() => {
+                        router.push(`/quiz/${quizItem.id}/data`);
+                        setOpenMenuId(null);
+                      }}
+                    >
+                      データ
+                    </button>
+                  </div>
+                )}
               </td>
               <td className={quiz.td}>
                   <Link

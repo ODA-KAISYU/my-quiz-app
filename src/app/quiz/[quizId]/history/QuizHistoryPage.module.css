@@ -1,0 +1,65 @@
+.historyContainer {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* 背景を薄グレーにしてカードを目立たせる */
+}
+
+.historyItem {
+    margin-bottom: 24px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* 影をやや強めに */
+    transition: box-shadow 0.3s ease;
+}
+
+.historyItem:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); /* hover 時に影強化 */
+}
+
+.historyItemTitle {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #1d4e9b;
+    display: flex;
+    justify-content: space-between; /* 日時とスコアを横並びに */
+    align-items: center;
+}
+
+.answersList {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 12px;
+}
+
+.answersList li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem; /* 少し大きめに */
+    color: #333;
+}
+
+.answersList li:last-child {
+    border-bottom: none;
+}
+.homeButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #1d4e9b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease;
+}
+
+.homeButton:hover {
+    background-color: #163f7a;
+}

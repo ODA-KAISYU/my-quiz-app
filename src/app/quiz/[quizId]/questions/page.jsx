@@ -1,4 +1,15 @@
 'use client';
+'use client';
+
+function calculateScore(answers, correctAnswers) {
+    let score = 0;
+    Object.keys(correctAnswers).forEach((number) => {
+        if (answers[number]?.trim() === correctAnswers[number]?.trim()) {
+            score += 1;
+        }
+    });
+    return score;
+}
 
 import { useParams, useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
@@ -11,6 +22,12 @@ export default function QuizQuestionsPage() {
     const router = useRouter();  // ここでRouter習得
 
     const [timeLeft, setTimeLeft] = useState(600);
+    useEffect(() => {
+        const savedTime = localStorage.getItem(`quiz-${quizId}-timeLeft`);
+        if (savedTime !== null) {
+            setTimeLeft(parseInt(savedTime, 10));
+        }
+        }, [quizId]);
 
     const quiz = quizzes[quizId]; // quizに応じて選択  
 
@@ -27,6 +44,8 @@ export default function QuizQuestionsPage() {
         const timer = setInterval(() => {
             setTimeLeft((prevTime) => prevTime - 1);
         }, 1000);
+
+        localStorage.setItem(`quiz-${quizId}-timeLeft`, timeLeft.toString());
 
         return () => clearInterval(timer);
     }, [timeLeft]);
@@ -66,12 +85,32 @@ export default function QuizQuestionsPage() {
             onClick={() => {
                 const isConfirmed = window.confirm("本当に解答を終了しますか？");
                 if (isConfirmed) {
-                    localStorage.setItem(`quiz-${quizId}-answers`, JSON.stringify(answers));
-                    
-                    router.push(`/quiz/${quizId}/result`); //ここでページ遷移
+                    // 既存の履歴を読み込む
+                    const historyKey = `quiz-${quizId}-history`;
+                    const existingHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+
+                    // 今回の解答データを作成
+                    const newEntry = {
+                        timestamp: new Date().toISOString(),
+                        answers: answers,
+                        score: calculateScore(answers, quizzes[quizId].correctAnswers),
+                    };
+
+                    // 履歴に追加
+                    existingHistory.push(newEntry);
+
+                    // 保存
+                    localStorage.setItem(historyKey, JSON.stringify(existingHistory));
+
+                    // タイマーの保存は削除
+                    localStorage.removeItem(`quiz-${quizId}-timeLeft`);
+
+                    // ページ遷移
+                    router.push(`/quiz/${quizId}/result`);
                 }
             }}
-            >解答終了
+            >
+            解答終了
             </button>
         </main>
     );
