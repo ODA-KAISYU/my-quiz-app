@@ -9,8 +9,12 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    color: #1d1d1f;
-    text-align: center;
+    background-color: #1d4e9b;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 4px solid #ffde00;
+    text-align: left;
 }
 
 .description {
@@ -84,3 +88,50 @@
     text-align: center;
     margin-bottom: 1rem;
   }
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.endButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #1d4e9b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.endButton:hover {
+    background-color: #163d7a;
+}
+
+.timerCard {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    margin: 1rem 0 0.5rem 0;
+    color: #1d1d1f;
+}

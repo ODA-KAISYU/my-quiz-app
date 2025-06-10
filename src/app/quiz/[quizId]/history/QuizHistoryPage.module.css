@@ -63,3 +63,26 @@
 .homeButton:hover {
     background-color: #163f7a;
 }
+
+.historyItemHeader {
+    background-color: #1d4e9b; /* 青 */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: 4px solid #ffeb3b; /* 黄色線 */
+}
+
+.pageHeader {
+    background-color: #1d4e9b;
+    color: white;
+    padding: 16px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-bottom: 4px solid #ffeb3b; /* 黄色線 */
+    margin-bottom: 16px;
+    text-align: center;
+    border-radius: 8px;
+}

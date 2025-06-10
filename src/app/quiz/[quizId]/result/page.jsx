@@ -41,34 +41,54 @@ export default function QuizResultPage() {
 
             <h2 className={styles.correctLabel}>正解</h2>
             <table className={styles.correctAnswerTable}>
-                <thead>
-                    <tr>
-                        <th>番号</th>
-                        <th>自分の回答</th>
-                        <th>正解</th>
-                        <th>判定</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    {Object.keys(quizzes[quizId].correctAnswers).map((number) => (
-                        <tr key={number}>
-                            <td>({number})</td>
-                            <td>{answers[number] || "（未回答）"}</td>
-                            <td>{quizzes[quizId].correctAnswers[number]}</td>
-                            <td>
-                                {answers[number]?.trim() === quizzes[quizId].correctAnswers[number]?.trim()
-                                    ? "正解"
-                                    : "不正解"}
-                            </td>
-                        </tr>
-                    ))}
+                    {quizzes[quizId].description.map((sectionTitle, sectionIndex) => {
+                        const sectionAnswerCounts = quizzes[quizId].sectionAnswerCounts;
+                        const start = sectionAnswerCounts
+                            .slice(0, sectionIndex)
+                            .reduce((sum, count) => sum + count, 0);
+                        const end = start + sectionAnswerCounts[sectionIndex];
+
+                        return (
+                            <React.Fragment key={sectionTitle}>
+                                <tr>
+                                    <td colSpan="4" className={styles.sectionHeader}>
+                                        {sectionTitle}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>番号</th>
+                                    <th>自分の回答</th>
+                                    <th>正解</th>
+                                    <th>判定</th>
+                                </tr>
+                                {Array.from({ length: end - start }, (_, i) => {
+                                    const number = start + i + 1;
+                                    return (
+                                        <tr key={number}>
+                                            <td>({i + 1})</td>
+                                            <td>{answers[number] || "（未回答）"}</td>
+                                            <td>{quizzes[quizId].correctAnswers[number]}</td>
+                                            <td>
+                                                {answers[number]?.trim() === quizzes[quizId].correctAnswers[number]?.trim()
+                                                    ? "正解"
+                                                    : "不正解"}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </React.Fragment>
+                        );
+                    })}
                 </tbody>
             </table>
 
-            <h2 className={styles.scoreLabel}>得点</h2>
-            <p className={styles.score}>
-                {score} / {Object.keys(quizzes[quizId].correctAnswers).length} 点
-            </p>
+            <div className={styles.scoreSection}>
+                <div>得点</div>
+                <div>
+                    {score} / {Object.keys(quizzes[quizId].correctAnswers).length} 点
+                    </div>
+                </div>
             <button className={styles.homeButton}
                     onClick={() => router.push("/quiz-list")}>HOMEに戻る</button>
         </main>
